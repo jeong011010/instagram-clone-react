@@ -15,7 +15,10 @@ function App() {
       </div>
 
       <h1>Hi😄</h1>
-      <Post/>
+      <Post username="music" caption="test1" imageUrl="https://t1.daumcdn.net/cfile/tistory/9960C8455A901F7E29" />
+      <Post username="hello" caption="test2" imageUrl="https://source.unsplash.com/random"/>
+      <Post username="tree" caption="test3" imageUrl="https://source.unsplash.com/random/tree"/>
+      
 
       {/* Posts */}
       {/* Posts */}
