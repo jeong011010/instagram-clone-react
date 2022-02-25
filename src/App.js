@@ -5,27 +5,14 @@ import Post from './Post';
 import { db } from './firebase';
 
 function App() {
-  const [posts, setPosts] = useState([
-    {
-      username: "music",
-      caption: "test1", 
-      imageUrl: "https://t1.daumcdn.net/cfile/tistory/9960C8455A901F7E29"
-    },
-    {
-      username: "hello", 
-      caption: "test2", 
-      imageUrl: "https://source.unsplash.com/random"
-    },
-    {
-      username: "tree", 
-      caption: "test3", 
-      imageUrl: "https://source.unsplash.com/random/tree"
-    }
-  ]);
+  const [posts, setPosts] = useState([]);
 
   useEffect(()=>{
-    db.collection('posts').onSnapshot(snapshot =>{
-      setPosts(snapshot.docs.map(doc => doc.data()))
+    db.collection('posts').onSnapshot(snapshot => {
+      setPosts(snapshot.docs.map(doc => ({
+        id: doc.id,
+        post: doc.data()
+      })));
     })
   }, []);
 
@@ -43,8 +30,8 @@ function App() {
       <h1>Hi😄</h1>
 
       {
-        posts.map(post => (
-          <Post username={post.username} caption={post.caption} imageUrl={post.imageUrl}/>
+        posts.map(({id, post}) => (
+          <Post key={id} username={post.username} caption={post.caption} imageUrl={post.imageUrl}/>
         ))
       }
       
