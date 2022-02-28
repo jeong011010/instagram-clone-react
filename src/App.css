@@ -20,8 +20,11 @@
   object-fit: contain;
 }
 
+
 .app_posts{
   padding: 20px;
+  display: flex;
+  justify-content: center;
 }
 
 .app_signup{
